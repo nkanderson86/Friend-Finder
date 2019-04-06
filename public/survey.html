@@ -198,11 +198,6 @@
           </div>
           <div class="modal-body">
             <h2 id="match-name"></h2>
-            <img
-              id="match-img"
-              src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg"
-              alt=""
-            />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -219,8 +214,8 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
       crossorigin="anonymous"
     ></script>
     <script
@@ -230,6 +225,7 @@
     ></script>
     <script type="text/javascript">
       // Capture the form inputs
+
       $("#submit").on("click", function(event) {
         event.preventDefault();
 
@@ -254,25 +250,24 @@
         console.log(newFriend);
 
         $.post("/api/friends", newFriend, function(data) {
-          // If a table is available... tell user they are booked.
           if (data) {
             alert("This is working! New Friend added.");
-          }
-
-          // If a table is available... tell user they on the waiting list.
-          else {
+          } else {
             alert("Something went wrong");
           }
 
-          // Clear the form when submitting
           $("#name").val("");
           $("#photo").val("");
+          checkscores();
         });
 
-        let (checkScores => {
-            console.log(newFriend)
-        })
-
+        checkScores => {
+          let friendData = require("data/friends.js");
+          for (let i = 0; i < newFriend.scores.length; i++) {
+            let diff = Math.abs(friendArray.scores[i] - newFriend.scores[i]);
+            console.log(diff);
+          }
+        };
       });
     </script>
   </body>
